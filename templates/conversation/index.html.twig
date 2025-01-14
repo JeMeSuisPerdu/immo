@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{navbar()}}
+
+<h1>Conversations</h1>
+<form id="search-form" data-turbo="false">
+    <input type="text" id="username" name="username" placeholder="Rechercher un utilisateur">
+</form>
+
+<div id="user-list" data-turbo="false">
+    <!-- Les résultats de recherche s'afficheront ici -->
+</div>
+
+{% if conversations|length > 0 %}
+    <h2>Your Conversations</h2>
+    <ul>
+        {% for conversation in conversations|reverse %}
+            <li>
+                <a href="{{ path('app_view_conversation', { conversation: conversation.id }) }}">
+                    {% for user in conversation.users %}
+                        {% if user.username != app.user.username %}
+                            {{ user.username }}
+                            {% if not loop.last %}, 
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h2>No conversations</h2>
+{% endif %}
+
+
+
+<script>
+    // Fonction de debounce pour limiter la fréquence des appels API
+    function debounce(func, delay) {
+        let timer;
+        return function (...args) {
+            clearTimeout(timer);
+            timer = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+
+    // Fonction de recherche en temps réel
+    function searchUsers() {
+        const username = document.getElementById('username').value;
+        const userList = document.getElementById('user-list');
+        
+        if (username.length < 1) { // Lance la recherche seulement si la longueur est suffisante
+            userList.innerHTML = '';
+            return;
+        }
+
+        fetch('{{ path('search_users') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username: username }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            userList.innerHTML = '';
+
+            if (Array.isArray(data.users)) {
+                if (data.users.length === 0) {
+                    userList.innerHTML = '<p>No user found</p>';
+                } else {
+                    data.users.forEach(user => {
+                        const userElement = document.createElement('div');
+                        // Construire l'URL côté client
+                        const startConversationUrl = `/conversations/start/${user.id}`;
+                        
+                        userElement.innerHTML = `
+                            <a href="${startConversationUrl}">${user.username}</a>
+                        `;
+                        
+                        userList.appendChild(userElement);
+                    });
+                }
+            } else {
+                console.error('Invalid data format:', data);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('username');
+        if (searchInput) {
+            // Déclenche la recherche avec un délai de debounce
+            searchInput.addEventListener('input', debounce(searchUsers, 300)); // 300ms de délai
+        }
+    });
+</script>
+
+
+
+
+
+
+{% endblock %}
+

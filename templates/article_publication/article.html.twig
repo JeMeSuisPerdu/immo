@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticlePublicationController!{% endblock %}
+
+{% block body %}
+    {{ navbar() }}
+
+    <div class="article-container">
+        <form action="{{ path('app_publish_article') }}" class="align-form-article" method="post" enctype="multipart/form-data">
+            {{ form_start(articleForm) }}
+
+            <div class="form-article">
+                <h2>Publication d'un article</h2>
+
+                <!-- Section des photos -->
+                <div class="photo-section">
+                    <div class="flex-column">
+                        <label>Photos (JPEG, PNG, SVG)</label>
+                    </div>
+                    <div id="photo-container">
+                        {% for i in 0..4 %}
+                            <div class="photo-box" data-index="{{ i }}">
+                                <input 
+                                    type="file" 
+                                    name="new_photos[]" 
+                                    class="photo-input" 
+                                    style="display: none;" 
+                                    data-index="{{ i }}"
+                                >
+                                <button 
+                                    type="button" 
+                                    class="add-photo-button" 
+                                    data-index="{{ i }}"
+                                >
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                    <path
+                                    d="M14.2647 15.9377L12.5473 14.2346C11.758 13.4519 11.3633 13.0605 10.9089 12.9137C10.5092 12.7845 10.079 12.7845 9.67922 12.9137C9.22485 13.0605 8.83017 13.4519 8.04082 14.2346L4.04193 18.2622M14.2647 15.9377L14.606 15.5991C15.412 14.7999 15.8149 14.4003 16.2773 14.2545C16.6839 14.1262 17.1208 14.1312 17.5244 14.2688C17.9832 14.4253 18.3769 14.834 19.1642 15.6515L20 16.5001M14.2647 15.9377L18.22 19.9628M18.22 19.9628C17.8703 20 17.4213 20 16.8 20H7.2C6.07989 20 5.51984 20 5.09202 19.782C4.7157 19.5903 4.40973 19.2843 4.21799 18.908C4.12583 18.7271 4.07264 18.5226 4.04193 18.2622M18.22 19.9628C18.5007 19.9329 18.7175 19.8791 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V13M11 4H7.2C6.07989 4 5.51984 4 5.09202 4.21799C4.7157 4.40973 4.40973 4.71569 4.21799 5.09202C4 5.51984 4 6.0799 4 7.2V16.8C4 17.4466 4 17.9066 4.04193 18.2622M18 9V6M18 6V3M18 6H21M18 6H15"
+                                    stroke="#000000"
+                                    stroke-width="1.872"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    ></path>
+                                    </g>
+                                </svg>
+
+                                </button>
+                                <img 
+                                    src="#" 
+                                    alt="Photo" 
+                                    class="photo-preview" 
+                                    data-index="{{ i }}" 
+                                    style="display: none;"
+                                >
+                                <button 
+                                    type="button" 
+                                    class="remove-photo-button" 
+                                    data-index="{{ i }}" 
+                                    style="display: none;"
+                                >
+                                    <svg 
+                                        viewBox="0 0 24.00 24.00" 
+                                        fill="none" 
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path 
+                                            d="M16 8L8 16M8.00001 8L16 16" 
+                                            stroke="#000000" 
+                                            stroke-width="1.272" 
+                                            stroke-linecap="round" 
+                                            stroke-linejoin="round"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Section du titre et de la description -->
+                <div class="title-description-section">
+                    <div class="flex-column">
+                        <label>{{ form_label(articleForm.title) }}</label>
+                    </div>
+                    <div class="title-input">
+                        {{ form_widget(articleForm.title, {
+                            'attr': {
+                                'class': 'Tinput',
+                                'placeholder': 'Enter the title of your publication',
+                                'required': 'required'
+                            }
+                        }) }}
+                    </div>
+
+                    <div class="flex-column">
+                        <label>{{ form_label(articleForm.description) }}</label>
+                    </div>
+                    <div class="inputDescription">
+                        {{ form_widget(articleForm.description, {
+                            'attr': {
+                                'class': 'textarea',
+                                'placeholder': 'Enter the description of the article',
+                                'required': 'required'
+                            }
+                        }) }}
+                    </div>
+                </div>
+
+                <!-- Section de la catégorie et sous-catégorie -->
+                <div class="category-section">
+                    <div class="flex-column">
+                        <label>{{ form_label(articleForm.category) }}</label>
+                    </div>
+                    <div class="inputCategory">
+                        {{ form_widget(articleForm.category, {
+                            'attr': {
+                                'class': 'listboxCategory'
+                            }
+                        }) }}
+                    </div>
+
+                    <div class="flex-column">
+                        <label>{{ form_label(articleForm.subcategory) }}</label>
+                    </div>
+                    <div class="inputCategory">
+                        {{ form_widget(articleForm.subcategory, {
+                            'attr': {
+                                'class': 'listboxCategory'
+                            }
+                        }) }}
+                    </div>
+                </div>
+
+                <!-- Section des attributs -->
+                <div class="attributes-section">
+                    <div class="form-attribut">
+                        <div id="attributes-container">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section des attributs -->
+                <div class="price-section">
+                    <div class="flex-column">
+                         <label for="price">Prix (sans décimal)</label>
+                    </div>
+                    <div class="inputPriceForm">
+                        <input class="inputPrice" type="number" id="price" name="price" placeholder="Enter the price" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="button-submit">Publiez votre article</button>
+            </div>
+
+            {{ form_end(articleForm) }}
+        </form>
+    </div>
+{% endblock %}

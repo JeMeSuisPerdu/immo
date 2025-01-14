@@ -1,0 +1,86 @@
+/* Pour les petits téléphones (moins de 720p) */
+@media (max-width: 480px) {
+  .home-navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo-site {
+    font-size: 20px;
+  }
+
+  .auth-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-section {
+    height: 30vh;
+  }
+
+  .header-content-wrapper h1 {
+    font-size: 24px;
+  }
+}
+
+/* Pour les téléphones entre 720p et 1080p */
+@media (min-width: 481px) and (max-width: 1080px) {
+  .home-navbar-container {
+    padding: 5px;
+  }
+
+  .logo-site {
+    font-size: 22px;
+  }
+
+  #sellNavbarBtn {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .header-section {
+    height: 35vh;
+  }
+}
+
+/* Pour les tablettes et petits écrans 1080p */
+@media (min-width: 1081px) and (max-width: 1440px) {
+  .home-navbar-container {
+    padding: 15px 20px;
+  }
+
+  .logo-site {
+    font-size: 25px;
+  }
+
+  #sellNavbarBtn {
+    font-size: 14px;
+  }
+
+  .header-section {
+    height: 40vh;
+  }
+}
+
+/* Pour les grands écrans jusqu'à 2K */
+@media (min-width: 1441px) and (max-width: 2560px) {
+  .home-navbar-container {
+    justify-content: space-between;
+  }
+
+  .header-section {
+    height: 45vh;
+  }
+}
+
+/* Pour les écrans encore plus grands (au-delà de 2K) */
+@media (min-width: 2561px) {
+  .header-section {
+    height: 50vh;
+  }
+
+  .home-navbar-container {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}

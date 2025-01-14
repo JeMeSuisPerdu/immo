@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue des catégories{% endblock %}
+
+{% block body %}
+    {{navbar()}}
+    <p>PAGE DE TOUTES LES CATEGORIES</p>
+    <form>
+        <div class="flex-column">
+            <label for="category">Catégorie :</label>
+            <select name="form[category]" id="category" class="listborderCategory">
+                <option value="">Choisir une catégorie</option>
+                <!-- Les options seront dynamiques selon vos données disponibles -->
+                <option value="1">Catégorie 1</option>
+                <option value="2">Catégorie 2</option>
+            </select>
+        </div>
+
+        <div class="flex-column">
+            <label for="subcategory">Sous-catégorie :</label>
+            <select name="form[subcategory]" id="subcategory" class="listborderCategory" disabled>
+                <option value="">Choisir une sous-catégorie</option>
+            </select>
+        </div>
+
+        <div id="attributes-container" class="attributes-section">
+            <h3>Attributs</h3>
+            <!-- Les attributs dynamiques apparaîtront ici -->
+        </div>
+
+        <div class="attributes-section">
+            <button type="submit">Envoyer</button>
+        </div>
+    </form>
+
+    <script src="script.js"></script>
+{% endblock %}

@@ -1,0 +1,113 @@
+.main-container{
+  margin: 50px;
+}
+
+.form-register h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: bold;
+  unicode-bidi: isolate;
+}
+
+.form-container {
+    display:flex;
+    justify-content:center;
+    align-items: flex-end;
+}
+
+.form-register {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #ffffff;
+    padding: 50px;
+    width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    margin-left: 50px;
+  }
+  
+  .form-register button {
+    align-self: flex-end;
+  }
+
+  .form-register ul {
+    display: initial;
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+    unicode-bidi: normal;
+}
+  .form-register li {
+    color: red; /* Couleur rouge pour les messages d'erreur */
+    font-size: 14px; /* Taille de police */
+    list-style-type: none; /* Supprime les puces */}
+  
+  .flex-column > label {
+    color: #151717;
+    font-weight: 600;
+  }
+  
+  .input {
+    margin-left: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 85%;
+    height: 95%;
+  }
+  
+  .input:focus {
+    outline: none;
+  }
+  
+  .inputForm:focus-within {
+    border: 1.5px solid #8432ee;
+  }
+  
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  .flex-row > div > label {
+    font-size: 14px;
+    color: black;
+    font-weight: 400;
+  }
+  
+  .span {
+    font-size: 14px;
+    margin-left: 5px;
+    color: #2d79f3;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .button-submit {
+    margin: 20px 0 10px 0;
+    background-color: #000000ed;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .button-submit:hover {
+    background-color: #292929;
+  }
+  
+  .form-register p > a {
+    text-align: center;
+    margin: 5px 0;
+  }

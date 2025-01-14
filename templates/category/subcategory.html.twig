@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category }}{% endblock %}
+
+{% block body %}
+    {{ navbar() }}
+
+    <div class="home-container container">
+        {% if subcategory %}
+            <h2>{{ subcategory|title }}</h2>
+            <p>Contenu spécifique à la sous-catégorie {{ subcategory }}</p>
+
+            <h3>Articles dans cette sous-catégorie :</h3>
+{% if articles is defined and articles is not empty %}
+    <div class="articles-grid" id="articles-container">
+        {% for article in articles %}
+            <div class="article-card">
+                <h4>{{ article.title }}</h4>
+                <p>{{ article.description }}</p>
+                <p>Prix : {{ article.price }} €</p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Aucun article disponible dans cette sous-catégorie.</p>
+{% endif %}
+
+        {% else %}
+            <p>Sous-catégorie non trouvée.</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{# templates/article_publication/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Article: {{ article.title }}{% endblock %}
+
+{% block body %}
+{{navbar()}}
+<div class="main-article-page container">
+    <div class="main-article-container">
+        <div class="photos-article-container">
+            <div class="photo-gallery">
+                {% if article.photos is not empty %}
+                    {% for photo in article.photos %}
+                        <div class="photo-item{% if loop.index > 2 %} hidden{% endif %}">
+                            <img src="{{ asset('uploads/photos_article/' ~ photo.url) }}" alt="Description de l'image">
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Aucune photo disponible.</p>
+                {% endif %}
+                {% if article.photos|length > 1 %}
+                    <button id="see-all-btn">Voir tout</button>
+                {% endif %}
+                <div id="carousel-overlay" class="carousel-overlay hidden">
+                    <div class="carousel-container">
+                        <button id="close-carousel" class="close-btn">&times;</button>
+                        <div id="carousel" class="carousel">
+                            {% for photo in article.photos %}
+                                <div class="carousel-slide">
+                                    <img src="{{ asset('uploads/photos_article/' ~ photo.url) }}" alt="Description de l'image">
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <button class="carousel-control prev">&lt;</button>
+                        <button class="carousel-control next">&gt;</button>
+                    </div>
+                </div>
+            </div>
+            <div class="article-show-info">
+                <h1>{{ article.title }}</h1>
+                <h3>{{ article.price|number_format(0, '.', ' ') }}€</h3>
+                <p>{{ article.description }}</p>
+                
+            </div>
+            <div class="article-show-info">
+                {% if attributes is empty %}
+                    <p>Pour plus d'informations n'hésitez pas à contacter le propriétaire de cette annonce.</p>
+                {% else %}
+                    <ul>
+                        {% for attributeValue in attributes %}
+                            <li>
+                                <strong>{{ attributeValue.attribute.name }}:</strong>
+                                {% if attributeValue.valueString is not null %}
+                                    {{ attributeValue.valueString }}
+                                {% elseif attributeValue.valueInteger is not null %}
+                                    {{ attributeValue.valueInteger }}
+                                {% elseif attributeValue.valueBoolean is not null %}
+                                    {{ attributeValue.valueBoolean ? 'Yes' : 'No' }}
+                                {% elseif attributeValue.valueDate is not null %}
+                                    {{ attributeValue.valueDate|date('Y-m-d') }}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        <div class="user-article-container">
+            <div class="user-info-container">
+                <a href="{{ path('app_user_profile', { 'id': article.owner.id }) }}" class="user-name-show">
+                    <img class="pfp-user-show" src="{{ asset('uploads/users_pfp/' ~ article.owner.pfp) }}" alt="Photo de Profil">
+                    <h3>{{ article.owner.username }}</h3>
+                </a>
+            </div>
+            <div class="buy-article-container">
+                <h3>Acheter cet article</h3>
+                    <input type="hidden" name="article_id" value="{{ article.id }}">
+                    <input type="hidden" name="price" value="{{ article.price }}">
+                    <button type="submit" class="buy-btn">Acheter</button>
+                <button>Echanger</button>
+                <button><a href="{{ path('app_start_conversation', { 'user': article.owner.id }) }}" class="btn btn-primary">Message</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

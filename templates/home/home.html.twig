@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    {{ navbar() }}
+    
+<div class="marquee-container">
+  <div class="marquee">
+    <ul class="marquee-content">
+      <li><img src="./img/categories_img/pexels-binyaminmellish-1396122.jpg" alt="" />
+        <h2>
+            Immobilier
+        </h2>
+      </li>
+      <li><img src="./img/categories_img/pexels-bylukemiller-16510636.jpg" alt="" />
+        <h2>
+          Véhicules
+        </h2>
+      </li>
+      <li><img src="./img/categories_img/pexels-rdne-8580765.jpg" alt="" />
+        <h2>
+          Vêtements
+        </h2>
+      </li>
+      <li><img src="./img/categories_img/pexels-gelver-redfield-188363-593093.jpg" alt="" />
+        <h2>
+          Electronique
+        </h2>
+      </li>
+      <li><img src="./img/categories_img/pexels-tiana-18128-2995012.jpg" alt="" />
+        <h2>
+          Meubles
+        </h2>
+      </li>
+      <li><img src="./img/categories_img/pexels-wendywei-2820819.jpg" alt="" />
+        <h2>
+          Loisirs
+        </h2>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="main-home-container">
+    <div class="home-container container">
+        <section class="home-threads-group">
+            <h2 class="title-page">Fil d'actualité</h2>
+            <div class="articles-grid">
+                {% for article in articles %}
+                    <div class="article-card">
+                        <div class="photo-container">
+                            <a href="{{ path('app_show_article', {'id': article.id}) }}" class="read-more">
+                                {% for photo in article.photos %}
+                                    <img class="photo-article-home" src="{{ asset('uploads/photos_article/' ~ photo.url) }}" alt="Image de l'article correspondant">
+                                {% endfor %}
+                            </a>
+                        </div>
+                        <div class="article-info">
+                            <p id="home-price">{{ article.price|number_format(0, '.', ' ') }}€</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    const root = document.documentElement;
+    const marqueeElementsDisplayed = getComputedStyle(root).getPropertyValue("--marquee-elements-displayed");
+    const marqueeContent = document.querySelector("ul.marquee-content");
+
+    root.style.setProperty("--marquee-elements", marqueeContent.children.length);
+
+    for(let i=0; i<marqueeElementsDisplayed; i++) {
+        marqueeContent.appendChild(marqueeContent.children[i].cloneNode(true));
+    }
+</script>
+
+{% endblock %}
+

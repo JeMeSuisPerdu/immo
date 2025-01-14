@@ -1,0 +1,183 @@
+{# templates/navbar/navbar.html.twig #}
+
+
+<div class="auth-links"  data-turbolinks="false">
+    <div class="home-navbar-container container">
+        <a class="logo-site" href="{{ path('app_home') }}">InMySac</a>  
+        
+        <div class="search-form">
+            <form action="127.0.0.1:8000/" id="form" method="get" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+                <meta itemprop="target" content="127.0.0.1:8000/?s={query}">
+                <input id='s' class="search-input" placeholder="Recherche" required type="text">
+            </form>
+        </div>
+        <div class="search">
+        <div id="live-search_sb" class="live-search_sb">
+            <div class="live-search_sb_cont">
+                <div class="live-search_sb_top"></div>
+                <div id="live-search_results" style="width: 100%;">
+                    <div id="live-search_val">
+                        <ul class="live-search_main">
+                            <li>
+                                <div class="live-search_result_container">
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="live-search_more"></div>
+                </div>
+                <div class="live-search_sb_bottom"></div>
+            </div>
+        </div>
+        </div>
+        
+        <a id="sellNavbarBtn" href="{{ path('app_publish_article') }}">Vendre maintenant</a>
+        
+        <div class="btn-navbar-icon">
+        {% if app.user %}
+                <a>
+                    <svg class="btn-account" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5 6.2C5 5.07989 5 4.51984 5.21799 4.09202C5.40973 3.71569 5.71569 3.40973 6.09202 3.21799C6.51984 3 7.07989 3 8.2 3H15.8C16.9201 3 17.4802 3 17.908 3.21799C18.2843 3.40973 18.5903 3.71569 18.782 4.09202C19 4.51984 19 5.07989 19 6.2V21L12 16L5 21V6.2Z" stroke="#000000" stroke-width="2" stroke-linejoin="round"></path> </g></svg>
+                </a>
+                <a>
+                    <svg class="btn-account" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12.0009 5C13.4331 5 14.8066 5.50571 15.8193 6.40589C16.832 7.30606 17.4009 8.52696 17.4009 9.8C17.4009 11.7691 17.846 13.2436 18.4232 14.3279C19.1606 15.7133 19.5293 16.406 19.5088 16.5642C19.4849 16.7489 19.4544 16.7997 19.3026 16.9075C19.1725 17 18.5254 17 17.2311 17H6.77066C5.47638 17 4.82925 17 4.69916 16.9075C4.54741 16.7997 4.51692 16.7489 4.493 16.5642C4.47249 16.406 4.8412 15.7133 5.57863 14.3279C6.1558 13.2436 6.60089 11.7691 6.60089 9.8C6.60089 8.52696 7.16982 7.30606 8.18251 6.40589C9.19521 5.50571 10.5687 5 12.0009 5ZM12.0009 5V3M9.35489 20C10.0611 20.6233 10.9888 21.0016 12.0049 21.0016C13.0209 21.0016 13.9486 20.6233 14.6549 20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>                </a>
+                </a>
+                <a href="{{ path('app_conversations') }}">
+                    <svg class="btn-account" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 8L8.44992 11.6333C9.73295 12.4886 10.3745 12.9163 11.0678 13.0825C11.6806 13.2293 12.3194 13.2293 12.9322 13.0825C13.6255 12.9163 14.2671 12.4886 15.5501 11.6333L21 8M6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V8.2C21 7.0799 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </a>
+                
+        {% endif %}
+        
+        <div class="home-icon-account">
+    {% if app.user %}
+        <a>
+            <img class="user-navbar-pfp" id="btn" src="{{ asset('uploads/users_pfp/' ~ app.user.pfp) }}" alt="Photo de profil de l'utilisateur">
+        </a>
+    {% else %}
+        <svg class="btn-account" id="btn" viewBox="0 0 48.00 48.00" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000" stroke-width="0.00048000000000000007" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="2.592"></g>
+            <g id="SVGRepo_iconCarrier">
+                <path d="M0 0h48v48H0z" fill="none"></path>
+                <g id="Shopicon">
+                    <path d="M31.278,25.525C34.144,23.332,36,19.887,36,16c0-6.627-5.373-12-12-12c-6.627,0-12,5.373-12,12 c0,3.887,1.856,7.332,4.722,9.525C9.84,28.531,5,35.665,5,44h38C43,35.665,38.16,28.531,31.278,25.525z M16,16c0-4.411,3.589-8,8-8 s8,3.589,8,8c0,4.411-3.589,8-8,8S16,20.411,16,16z M24,28c6.977,0,12.856,5.107,14.525,12H9.475C11.144,33.107,17.023,28,24,28z"></path>
+                </g>
+            </g>
+        </svg>
+    {% endif %}
+
+    <div class="dropdown" id="dropdown">
+        {% if not app.user %}
+            <a href="{{ path('app_register') }}">Inscription</a>
+            <a href="{{ path('app_login') }}">Connexion</a>
+        {% else %}
+            <a href="{{ path('app_profil') }}">Mon profil</a>
+            <a href="{{ path('app_logout') }}">Se déconnecter</a>
+        {% endif %}
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
+<div class="category-navbar-container">
+    <nav>
+        <ul>
+            {% for category in categories %}
+                <li class="dropdown-category">
+                    <a href="#" class="category-link" aria-label="{{ category.name }}">{{ category.name }}</a>
+                    <ul class="dropdown-content">
+                        {% for subcategory in category.subcategories %}
+                            <li class="dropdown-sub">
+                                <a href="{{ path('app_subcategory', {'category': category.slug, 'subcategory': subcategory.slug}) }}" class="subcategory-link" aria-label="{{ subcategory.name }}">
+                                    {{ subcategory.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('s'); // Champ de recherche
+        const resultsContainer = document.getElementById('live-search_sb'); // Conteneur des résultats
+        const resultsList = document.querySelector('#live-search_results ul'); // Liste des résultats
+
+        // Ajouter un événement sur l'input
+        searchInput.addEventListener('input', function () {
+            const query = this.value.trim();
+
+            if (query.length < 1) {
+                resultsContainer.style.display = 'none'; // Masquer les résultats si le champ est vide
+                resultsList.innerHTML = ''; // Vider les résultats existants
+                return;
+            }
+
+            // Effectuer une requête AJAX
+            fetch(`/article/search/ajax?query=${encodeURIComponent(query)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur lors de la requête réseau.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    resultsList.innerHTML = ''; // Vider les résultats existants
+
+                    if (data.length === 0) {
+                        // Aucun résultat trouvé
+                        const noResults = document.createElement('li');
+                        noResults.textContent = 'Aucun résultat trouvé.';
+                        noResults.style.padding = '10px';
+                        noResults.style.color = '#000';
+                        resultsList.appendChild(noResults);
+                    } else {
+                        // Ajouter les résultats
+                        data.forEach(item => {
+                            const li = document.createElement('li');
+                            li.className = 'live-search_item';
+
+                            const link = document.createElement('a');
+                            link.href = `/article/${item.id}`;
+                            link.textContent = item.title;
+
+                            li.appendChild(link);
+                            resultsList.appendChild(li);
+                        });
+                    }
+
+                    resultsContainer.style.display = 'block'; // Afficher les résultats
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la recherche :', error);
+                    resultsList.innerHTML = ''; // Vider les résultats existants
+                    const errorLi = document.createElement('li');
+                    errorLi.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+                    errorLi.style.padding = '10px';
+                    errorLi.style.color = 'red';
+                    resultsList.appendChild(errorLi);
+                    resultsContainer.style.display = 'block'; // Afficher les erreurs
+                });
+        });
+
+        // Masquer les résultats si on clique à l'extérieur
+        document.addEventListener('click', function (event) {
+            if (!resultsContainer.contains(event.target) && event.target !== searchInput) {
+                resultsContainer.style.display = 'none';
+            }
+        });
+
+        // Empêcher la soumission du formulaire via "Entrée"
+        searchInput.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Bloquer l'action par défaut
+            }
+        });
+    });
+</script>

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de profil - {{ app.user.username }} | @inmysac{% endblock %}
+
+{% block body %}
+    {{ navbar() }}
+    <div class="home-container container">
+        {% if app.user %}
+            <div class="user-info-container">
+                <div class="user-info-second-container">
+                    <div class="user-pfp-username">
+                        <form action="{{ path('app_profil_edit_pfp') }}" method="post" enctype="multipart/form-data">
+                            <label for="pfp-upload">
+                                <img class="user-profil-pfp" id="btn" src="{{ asset('uploads/users_pfp/' ~ app.user.pfp) }}" alt="Photo de profil de l'utilisateur">
+                            </label>
+                            <input type="file" id="pfp-upload" name="pfp" accept=".jpg, .jpeg, .png" style="display:none;" onchange="this.form.submit()" required>
+                        </form>
+                        <h3>{{ app.user.username }}</h3>
+                    </div>
+
+                    {% if is_granted('ROLE_USER') and app.user == app.user %}
+                        <!-- Bouton pour accéder à la page de modification uniquement pour l'utilisateur connecté -->
+                        <a class="edit-profile" href="{{ path('app_profil_edit') }}">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path d="M8.5 21H4C4 17.134 7.13401 14 11 14C11.1681 14 11.3348 14.0059 11.5 14.0176M15 7C15 9.20914 13.2091 11 11 11C8.79086 11 7 9.20914 7 7C7 4.79086 8.79086 3 11 3C13.2091 3 15 4.79086 15 7ZM12.5898 21L14.6148 20.595C14.7914 20.5597 14.8797 20.542 14.962 20.5097C15.0351 20.4811 15.1045 20.4439 15.1689 20.399C15.2414 20.3484 15.3051 20.2848 15.4324 20.1574L19.5898 16C20.1421 15.4477 20.1421 14.5523 19.5898 14C19.0376 13.4477 18.1421 13.4477 17.5898 14L13.4324 18.1574C13.3051 18.2848 13.2414 18.3484 13.1908 18.421C13.1459 18.4853 13.1088 18.5548 13.0801 18.6279C13.0478 18.7102 13.0302 18.7985 12.9948 18.975L12.5898 21Z" stroke="#000000" stroke-width="1.44" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </g>
+                            </svg>
+                            <p>Modifier le profil</p>
+                        </a>
+                    {% endif %}
+
+                </div>
+
+                <div>
+                    <p>France</p>
+                    <p>Connecté il y a 5 minutes</p>
+                    <div class="rating">
+                        <input value="5" name="rating" id="star5" type="radio">
+                        <label for="star5"></label>
+                        <input value="4" name="rating" id="star4" type="radio">
+                        <label for="star4"></label>
+                        <input value="3" name="rating" id="star3" type="radio">
+                        <label for="star3"></label>
+                        <input value="2" name="rating" id="star2" type="radio">
+                        <label for="star2"></label>
+                        <input value="1" name="rating" id="star1" type="radio">
+                        <label for="star1"></label>
+                    </div>
+                </div>
+
+            </div>
+        {% else %}
+            <p>Une erreur est survenue lors de la récupération de votre profil</p>
+        {% endif %}
+    </div>
+{% endblock %}

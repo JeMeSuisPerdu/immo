@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le profil{% endblock %}
+
+{% block body %}
+    {{ navbar() }}
+    <div class="parameters-container">
+        {{ parametersNav() }}
+        <div class="profil-section">
+            <h3>Modifier votre profil</h3>
+            
+            {{ form_start(form, {'attr': {'class': 'edit_profil'}}) }}
+                <div class="flex-column">
+                    {{ form_label(form.username) }}
+                </div>
+                <div class="input-parameters">
+                    {{ form_widget(form.username, {'attr': {'class': 'input-update', 'readonly': 'readonly'}}) }}
+                    <svg id="svgUsernameProfil" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M9.65661 17L6.99975 17L6.99975 14M6.10235 14.8974L17.4107 3.58902C18.1918 2.80797 19.4581 2.80797 20.2392 3.58902C21.0202 4.37007 21.0202 5.6364 20.2392 6.41745L8.764 17.8926C8.22794 18.4287 7.95992 18.6967 7.6632 18.9271C7.39965 19.1318 7.11947 19.3142 6.8256 19.4723C6.49475 19.6503 6.14115 19.7868 5.43395 20.0599L3 20.9998L3.78312 18.6501C4.05039 17.8483 4.18403 17.4473 4.3699 17.0729C4.53497 16.7404 4.73054 16.424 4.95409 16.1276C5.20582 15.7939 5.50466 15.4951 6.10235 14.8974Z" 
+                                  stroke="#000000" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+                <div class="flex-column">
+                    {{ form_label(form.email) }}
+                </div>
+                <div class="input-parameters">
+                    {{ form_widget(form.email, {'attr': {'class': 'input-update', 'readonly': 'readonly'}}) }}
+                    <svg id="svgEmailProfil" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M9.65661 17L6.99975 17L6.99975 14M6.10235 14.8974L17.4107 3.58902C18.1918 2.80797 19.4581 2.80797 20.2392 3.58902C21.0202 4.37007 21.0202 5.6364 20.2392 6.41745L8.764 17.8926C8.22794 18.4287 7.95992 18.6967 7.6632 18.9271C7.39965 19.1318 7.11947 19.3142 6.8256 19.4723C6.49475 19.6503 6.14115 19.7868 5.43395 20.0599L3 20.9998L3.78312 18.6501C4.05039 17.8483 4.18403 17.4473 4.3699 17.0729C4.53497 16.7404 4.73054 16.424 4.95409 16.1276C5.20582 15.7939 5.50466 15.4951 6.10235 14.8974Z" 
+                                  stroke="#000000" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Ajouter d'autres champs de formulaire ici si nécessaire -->
+
+                <div class="form-group">
+                    {{ form_widget(form.save, {'attr': {'class': 'save-profil-btn'}}) }}
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+<style>
+.parameters-container{
+    display:flex;
+    justify-content: center;
+
+}
+.profil-section{
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    width: 525px;
+}
+.save-profil-btn{
+    border: none;
+    background: black;
+    color: #ffffff;
+    font-weight: 500;
+    margin-top: 30px;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+
+}
+.edit_profil{
+    margin-top:39px;
+}
+
+.input-parameters{
+    border: 1.5px solid #101810;
+    border-radius: 5px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    transition: 0.2s ease-in-out;
+    width: 80%;
+}
+.input-parameters svg{
+    height: 25px;
+    width: 25px;
+    cursor:pointer;
+    padding-left: 10px;
+
+}
+.input-update{
+    padding-left: 10px;
+    border: none;
+    width: 85%;
+    height: 95%;
+    border-radius:5px;
+    background-color: #dddddd87;
+    cursor: initial;
+}
+.input-update:focus {
+    outline: none;
+}
+</style>
+
+<script>
+    // Toggle pour le champ "Nom d'utilisateur"
+    const inputFocus = document.getElementsByClassName(".input-update");
+    const btnUpdateEmail = document.getElementById('svgEmailProfil');
+    const btnUpdateUsername = document.getElementById('svgUsernameProfil');
+    const usernameProfilInput = document.getElementById('edit_profil_username');
+    const emailProfilInput = document.getElementById('edit_profil_email');
+    const saveButton = document.getElementById('edit_profil_save');
+
+    // Cacher le bouton "Enregistrer" au départ
+    saveButton.style.display = 'none';
+
+    // Fonction pour afficher le bouton "Enregistrer"
+    function showSaveButton() {
+    saveButton.style.display = 'block'; // Affiche le bouton
+    }
+
+    // Ajout d'un événement de clic sur les SVG pour afficher le bouton
+    btnUpdateUsername.addEventListener('click', showSaveButton);
+    btnUpdateEmail.addEventListener('click', showSaveButton);
+
+    // Toggle pour le champ "Nom d'utilisateur"
+    btnUpdateUsername.addEventListener('click', function() {
+    if (usernameProfilInput.hasAttribute('readonly')) {
+        usernameProfilInput.removeAttribute('readonly');
+        usernameProfilInput.style.backgroundColor = '#fff'; // Blanc quand activé
+    } else {
+        usernameProfilInput.setAttribute('readonly', true);
+        usernameProfilInput.style.backgroundColor = '#f0f0f0'; // Gris clair quand désactivé
+    }
+    });
+
+    // Toggle pour le champ "Email"
+    btnUpdateEmail.addEventListener('click', function() {
+    if (emailProfilInput.hasAttribute('readonly')) {
+        emailProfilInput.removeAttribute('readonly');
+        emailProfilInput.style.backgroundColor = '#fff'; // Blanc quand activé
+    } else {
+        emailProfilInput.setAttribute('readonly', true);
+        emailProfilInput.style.backgroundColor = '#f0f0f0'; // Gris clair quand désactivé
+    }
+    });
+</script>
+
+{% endblock %}

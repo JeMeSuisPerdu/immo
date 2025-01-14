@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category }}{% endblock %}
+
+{% block body %}
+    {{navbar()}}
+    <h2>{{ category|replace({'-': ' '})|replace({' and ': ' & '})|title }}</h2>
+    <p>Contenu spécifique à la catégorie {{ category }}</p>
+    <!-- Insère ici le contenu dynamique de la sous-catégorie -->
+{% endblock %}

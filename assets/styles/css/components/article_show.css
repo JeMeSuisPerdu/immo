@@ -1,0 +1,225 @@
+/* Style pour la page principale de l'article */
+.main-article-page {
+    margin-left: 160px;
+    padding-top: 20px;
+}
+
+/* Container principal de l'article */
+.main-article-container {
+    display: flex;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    gap:50px;
+}
+
+/* Container pour les photos et les infos de l'article */
+.photos-article-container {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    padding: 20px;
+}
+
+/* Styles pour les photos */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+    height: 380px;
+    position: relative;
+}
+
+.photo-item img {
+    max-width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Styles pour le bouton "Voir tout" */
+#see-all-btn {
+    position: absolute;
+    right: 0px;
+    bottom: -20px;
+    padding: 25px;
+    margin-bottom: 8px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #4b4b4b75;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 150px;
+}
+
+#see-all-btn:hover {
+    background-color: #141414;
+}
+
+/* Styles pour le carrousel */
+.carousel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    overflow: hidden;
+}
+.carousel-overlay.visible {
+    display: flex; /* Affiche le carrousel lorsqu'il est visible */
+}
+.carousel-container {
+    position: relative;
+    background: #0000;
+    border-radius: 8px;
+    width: 30%;
+    max-width: 300px;
+}
+
+.carousel-slide img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5%;
+    font-size: 1.5em;
+    transition: background-color 0.3s;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-slide {
+    min-width: 200px;
+  
+    text-align: center;
+}
+
+#close-carousel {
+    position: absolute;
+    right: 10px;
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 2em;
+    border-radius: 50%;
+}
+
+#close-carousel:hover {
+    color: rgb(212, 6, 6);
+}
+/* Informations de l'article */
+.article-show-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-optical-sizing: auto;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    z-index: 500;
+  }
+
+/* Container pour les informations de l'utilisateur */
+.user-article-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-top: 20px;
+    margin-left: 130px;
+}
+
+/* Informations de l'utilisateur */
+.user-info-container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.user-info-container h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #000000;
+}
+
+.user-info-container p {
+    margin: 5px 0;
+    color: #000000;
+}
+
+.buy-article-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    align-items: stretch;
+    background-color: #fff;
+    margin-top: 5px;
+}
+
+.user-name-show{
+    display: flex;
+    align-items: center;
+}
+
+.pfp-user-show{
+    height: 50px;
+    width: 50px;
+    border-radius: 60px;
+    margin-right: 1rem;
+}
+
+.buy-article-container button{
+ padding: 15px;
+ border: 1px solid #000000;
+ margin: 5px;
+ border-radius: 5px;
+}
+.buy-article-container button:hover{
+    color: white;
+    background-color: #604CC3;
+    border: 1px solid #6203F5;
+}
+.buy-btn{
+    background-color: #000000;
+    color: white;
+}
+.btn-primary{
+  color: black;
+}
