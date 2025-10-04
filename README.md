@@ -36,19 +36,10 @@ cd immo</code></pre>
 <h2>Photos de l'application déployée en local :</h2>
 
 <p><strong>Page d'accueil du site :</strong></p>
-<img src="https://monportefolioanis.go.yj.fr/photo_Inmysac/accueil.png" alt="Page d'accueil">
-
-<p><strong>Page d'inscription du site :</strong></p>
-<img src="https://monportefolioanis.go.yj.fr/photo_Inmysac/inscription.png" alt="Page d'inscription">  
-
-<p><strong>Page de connexion du site :</strong></p>
-<img src="https://monportefolioanis.go.yj.fr/photo_Inmysac/connexion.png" alt="Page de connexion">  
+<img src="https://imageprojetsanis.netlify.app/images/accueil.png" alt="Page d'accueil">
 
 <p><strong>Page de publication d'un article :</strong></p>
-<img src="https://monportefolioanis.go.yj.fr/photo_Inmysac/publication.png" alt="Page de publication">  
-
-<p><strong>Page des catégories :</strong></p>
-<img src="https://monportefolioanis.go.yj.fr/photo_Inmysac/catego.png" alt="Page des catégories">  
+<img src="https://imageprojetsanis.netlify.app/images/publication.png" alt="Page de publication">   
 
 <h2>📜 Statut du projet</h2>
 <p>🛠 <strong>En cours de développement</strong> – De nouvelles fonctionnalités et améliorations arrivent !</p>
