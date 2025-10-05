@@ -1,7 +1,8 @@
 <h1>👜 InMySac</h1>
 
 <p><strong>InMySac</strong> est une plateforme de troc inspirée de Vinted, offrant un design moderne et épuré. L'objectif est de permettre aux utilisateurs d'échanger des articles sans transaction monétaire, en privilégiant un système d'échange direct.</p>
-
+<p><strong>Page d'accueil du site :</strong></p>
+<img src="https://imageprojetsanis.netlify.app/images/accueill.png" alt="Page d'accueil">
 <h2>🚀 Fonctionnalités</h2>
 <ul>
     <li>🔹 <strong>Création de compte</strong> : Inscription et connexion sécurisées.</li>
@@ -35,11 +36,14 @@ cd immo</code></pre>
 
 <h2>Photos de l'application déployée en local :</h2>
 
-<p><strong>Page d'accueil du site :</strong></p>
-<img src="https://imageprojetsanis.netlify.app/images/accueil.png" alt="Page d'accueil">
+<p><strong>Page d'inscription du site :</strong></p>
+<img src="https://imageprojetsanis.netlify.app/images/inscription.png" alt="Page d'accueil">
+
+<p><strong>Page de connexion du site :</strong></p>
+<img src="https://imageprojetsanis.netlify.app/images/connexion.png" alt="Page d'accueil">
 
 <p><strong>Page de publication d'un article :</strong></p>
-<img src="https://imageprojetsanis.netlify.app/images/publication.png" alt="Page de publication">   
+<img src="https://imageprojetsanis.netlify.app/images/poster.png" alt="Page de publication">   
 
 <h2>📜 Statut du projet</h2>
 <p>🛠 <strong>En cours de développement</strong> – De nouvelles fonctionnalités et améliorations arrivent !</p>
